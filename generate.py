@@ -47,9 +47,15 @@ for file in tqdm( glob.glob( importFolder + '*.jpg' ) ):
 	img.save( get_image_path( uid, 'thumb', False ), "JPEG" )
 
 	clouds.append( {
-		'url': get_image_path( uid ),
+		'url': get_image_folder( uid, True ),
 		'thumbnail': get_image_path( uid, 'thumb' )
 	} )
+
+	# save index file
+	template = templateEnv.get_template( 'single.html.j2' )
+	with open( image_folder + 'index.html', 'w' ) as index_html:
+		index_html.write( template.render( cloud={ 'url': get_image_filename( uid ) } ) )
+
 
 # clouds = [ {
 # 	'url': file,
@@ -62,7 +68,7 @@ for file in tqdm( glob.glob( importFolder + '*.jpg' ) ):
 print ( "Writing index page..." )
 template = templateEnv.get_template( 'index.html.j2' )
 
-with open( exportRoot + '/index.html', 'w' ) as index_html:
+with open( exportRoot + 'index.html', 'w' ) as index_html:
 	index_html.write( template.render( clouds=clouds ) )
 
 print( "All done!" )

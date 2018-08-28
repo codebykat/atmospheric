@@ -1,3 +1,12 @@
+html {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.footer {
+  position: absolute;
+}
+
 #caption {
   /*font-family: 'Reenie Beanie', cursive;*/
   /*font-family: 'Amatic SC', cursive;*/
