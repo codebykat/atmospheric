@@ -1,0 +1,5 @@
+.virtualenv
+.Python
+cloud/*
+import/*.jpg
+index.html

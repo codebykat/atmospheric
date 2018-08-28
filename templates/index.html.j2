@@ -1,0 +1,13 @@
+{% extends "layout.html.j2" %}
+
+{% block content %}
+
+	{% for cloud in clouds %}
+		<div class="tile" style="background-image:url({{ cloud.thumbnail}})" >
+			<a href="{{ cloud.url }}">
+				<!-- <img src="{{ cloud.thumbnail }}" height="50" width="50" /> -->
+			</a>
+		</div>
+	{% endfor %}
+
+{% endblock %}

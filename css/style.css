@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+body {
+  height: 100vh;
+  background-color: skyblue;
+}
+
+#header {
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  background-color: rgba(70, 70, 70, .45);
+  border-bottom: 2px rgba(45,45,45, 0.5) solid;
+  position: fixed;
+  z-index: 100;
+  font-size: 0.9em;
+  height: 0.5em;
+  font-size: 24px;
+  padding: 0 0 1em 0;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+
+  width: 100%;
+  color: #fff;
+  background-color: rgba(70, 70, 70, .45);
+  border-top: 2px rgba(45,45,45, 0.5) solid;
+  z-index: 100;
+  font-size: 0.5em;
+  height: 0.5em;
+  font-size: 16px;
+  padding: 0 0 1em 0;
+}

@@ -1,0 +1,25 @@
+.content {
+  padding-top: 40px;
+  min-height: 100vh;
+
+  display: flex;
+  flex-flow: row wrap;
+  /*justify-content: flex-start;*/
+  /*justify-content: space-evenly;*/
+  align-items: stretch;
+}
+
+.tile {
+	background-size: cover;
+	/*flex-grow: 1;*/
+	/*flex-shrink: 100;*/
+  /*flex: 50px 100%;*/
+  /*flex: 1 0; 50px;*/
+  /*min-height: 50px;*/
+  /*max-height: 200px;*/
+  flex: 1 100%;
+}
+
+.tile a:hover img {
+	box-shadow: 0 25px 50px -25px rgba(0, 0, 0, .5) inset; 
+}
