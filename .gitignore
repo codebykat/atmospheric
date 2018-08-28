@@ -1,5 +1,5 @@
 .virtualenv
 .Python
-cloud/*
+docs/cloud/*
 import/*.jpg
 index.html
