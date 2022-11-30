@@ -1,0 +1,3 @@
+# keys can be found at: https://www.smugmug.com/app/developer
+SMUGMUG_API_KEY = "your client key here"
+SMUGMUG_API_SECRET = "your client secret here"

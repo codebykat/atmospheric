@@ -1,3 +1,7 @@
 .virtualenv
 .Python
+__pycache__
+config.py
+data/
 import/*.jpg
+
