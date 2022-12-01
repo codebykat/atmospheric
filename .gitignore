@@ -4,4 +4,4 @@ __pycache__
 config.py
 data/
 import/*.jpg
-
+import/*.jpeg

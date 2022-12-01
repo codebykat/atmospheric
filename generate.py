@@ -2,6 +2,8 @@
 import glob
 import jinja2
 import os
+import shutil
+from pathlib import Path
 from PIL import Image
 from tqdm import tqdm # fancy progress bar 😍
 
@@ -12,6 +14,7 @@ templateEnv = jinja2.Environment( loader=templateLoader )
 importFolder = 'import/';
 exportRoot = 'docs/'
 exportFolder = 'cloud/';
+extensions = ("*.jpg", "*.jpeg")
 
 thumbnail_sizes = [ (100, 100), (250, 250), (500, 500) ]
 
@@ -28,7 +31,7 @@ def get_image_path( uid, size='full', relative=True ):
 
 clouds = []
 print( "Processing new clouds..." )
-for file in tqdm( glob.glob( importFolder + '*.jpg' ) ):
+for file in tqdm( [f for f in Path(importFolder).iterdir() if any(f.match(p) for p in extensions)] ):
 	uid = os.path.splitext( os.path.basename ( file ) )[0]
 
 	image_folder = get_image_folder( uid, False )
@@ -56,7 +59,6 @@ for file in tqdm( glob.glob( importFolder + '*.jpg' ) ):
 	with open( image_folder + 'index.html', 'w' ) as index_html:
 		index_html.write( template.render( cloud={ 'url': get_image_filename( uid ) } ) )
 
-
 # clouds = [ {
 # 	'url': file,
 # 	'thumbnail': importFolder + '/' + file
@@ -65,10 +67,14 @@ for file in tqdm( glob.glob( importFolder + '*.jpg' ) ):
 # output folder structure = by date?
 
 # write a top-level page with an index
-print ( "Writing index page..." )
+print( "Writing index page..." )
 template = templateEnv.get_template( 'index.html.j2' )
 
 with open( exportRoot + 'index.html', 'w' ) as index_html:
 	index_html.write( template.render( clouds=clouds ) )
+
+# copy static files
+print( "Copying static files..." )
+shutil.copytree('templates/static', exportRoot, dirs_exist_ok=True )
 
 print( "All done!" )
